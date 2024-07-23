@@ -1,14 +1,18 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        PersonManager person = new PersonManager();
+        Scanner scanner = new Scanner(System.in);
+        int command = -1;
 
-//        person.createPerson(new Person("John", "Doe", 25));
-//        person.createPerson(new Person("John", "Smith", 31));
-//        person.createPerson(new Person("Ilon", "Macs", 4));
-//        person.createPerson(new Person("Max", "Korj", 37));
-//        person.createPerson(new Person("Van", "Helsing", 17));
-
-        person.getAllPersons();
-
+        do {
+            PersonManager.printMenu();
+            if (scanner.hasNextInt()) {
+                command = Integer.parseInt(scanner.nextLine());
+            } else {
+                scanner.nextLine();
+            }
+            PersonManager.handleCommand(command, scanner);
+        } while (command != 0);
     }
 }
